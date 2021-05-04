@@ -28,12 +28,12 @@ public class Movie {
         price = Price.createPrice(priceCode);
     }
 
-    int getFrequentRenterPoints(int rentalLength) {
+    public int getFrequentRenterPoints(int rentalLength) {
         // add bonus for a two day new release rental
         return price.getFrequentRenterPoints(rentalLength);
     }
 
-    double getCharge(int rentalLength){
+    public double getCharge(int rentalLength){
         return price.getCharge(rentalLength);
     }
 }

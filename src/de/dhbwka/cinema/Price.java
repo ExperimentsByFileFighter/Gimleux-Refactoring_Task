@@ -1,12 +1,12 @@
 package de.dhbwka.cinema;
 
 public abstract class Price {
-    abstract int getPriceCode();
-    int getFrequentRenterPoints(int rentalLength) {
+    public abstract int getPriceCode();
+    public int getFrequentRenterPoints(int rentalLength) {
         return 1;
     }
 
-    double getCharge(int rentalLength) {
+    public double getCharge(int rentalLength) {
         return 0;
     }
 
