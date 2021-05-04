@@ -1,20 +1,30 @@
 package de.dhbwka.cinema;
 
-import java.lang.*;
-import java.util.*;
+import java.util.Enumeration;
+import java.util.Vector;
 
 public class Customer {
     private String name;
     private Vector rentals = new Vector();
-    public Customer (String newname){
+
+    public Customer(String newname) {
         name = newname;
-    };
+    }
+
+    ;
+
     public void addRental(Rental arg) {
         rentals.addElement(arg);
-    };
-    public String getName (){
+    }
+
+    ;
+
+    public String getName() {
         return name;
-    };
+    }
+
+    ;
+
     public String statement() {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
@@ -27,12 +37,21 @@ public class Customer {
             // add frequent renter points
             frequentRenterPoints += each.getFrequentRenterPoints();
             //show figures for this rental
-            result += "\t" + each.getMovie().getTitle()+ "\t" + "\t" + each.getDaysRented() + "\t" + String.valueOf(each.getCharge()) + "\n";
-            totalAmount += each.getCharge();
+            result += "\t" + each.getMovie().getTitle() + "\t" + "\t" + each.getDaysRented() + "\t" + String.valueOf(each.getCharge()) + "\n";
         }
         //add footer lines
-        result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
+        result += "Amount owed is " + String.valueOf(getTotalCharge()) + "\n";
         result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
+        return result;
+    }
+
+    private double getTotalCharge() {
+        double result = 0;
+        Enumeration enum_rentals = rentals.elements();
+        while (enum_rentals.hasMoreElements()) {
+            Rental each = (Rental) enum_rentals.nextElement();
+            result += each.getCharge();
+        }
         return result;
     }
 
