@@ -1,17 +1,13 @@
-package de.dhbwka.test;
-
 import de.dhbwka.cinema.Customer;
 import de.dhbwka.cinema.Movie;
 import de.dhbwka.cinema.Rental;
+import org.junit.Test;
 
-public class Test {
-    public static void main(String[] args) {
-        System.out.println("Starting tests");
-        testMain();
-        System.out.println("Finished tests");
-    }
+import static org.junit.Assert.assertEquals;
 
-    private static void testMain() {
+public class TestRental {
+    @Test
+    public void testMain() {
         String customerName0 = "Gimli son of Glóin";
         String customerName1 = "Legolas Greenleaf";
 
@@ -68,13 +64,7 @@ public class Test {
         String actualOutput0 = customer0.statement();
         String actualOutput1 = customer1.statement();
 
-        if (!expectedOutput0.equals(actualOutput0))
-            throw new AssertionError("The expectedOutput differed from the actual one. Expected:\n" + expectedOutput0 + "\nGot:\n" + actualOutput0);
-        System.out.println("First one was ok.");
-
-        if (!expectedOutput1.equals(actualOutput1))
-            throw new AssertionError("The expectedOutput differed from the actual one. Expected:\n" + expectedOutput1 + "\nGot:\n" + actualOutput1);
-        System.out.println("Second one was ok.");
-        System.out.println("ok.");
+        assertEquals(expectedOutput0, actualOutput0);
+        assertEquals(expectedOutput1, actualOutput1);
     }
 }
