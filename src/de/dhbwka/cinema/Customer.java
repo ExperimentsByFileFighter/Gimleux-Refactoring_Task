@@ -6,8 +6,8 @@ public class Customer {
     private final String name;
     private final ArrayList<Rental> rentals = new ArrayList<Rental>();
 
-    public Customer(String newname) {
-        name = newname;
+    public Customer(String name) {
+        this.name = name;
     }
 
     public void addRental(Rental arg) {
