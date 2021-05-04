@@ -1,1 +1,1 @@
-This file was created by IntelliJ IDEA 12.1.6 for binding GitHub repository
+[![CodeFactor](https://www.codefactor.io/repository/github/experimentsbyfilefighter/gimleux-refactoring_task/badge)](https://www.codefactor.io/repository/github/experimentsbyfilefighter/gimleux-refactoring_task)
