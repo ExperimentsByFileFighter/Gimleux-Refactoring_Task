@@ -3,9 +3,9 @@ package de.dhbwka.cinema;
 public class Rental {
     private final Movie movie;
     private final int daysRented;
-    public Rental(Movie newmovie, int newdaysRented) {
-        movie = newmovie;
-        daysRented = newdaysRented;
+    public Rental(Movie movie, int daysRented) {
+        this.movie = movie;
+        this.daysRented = daysRented;
     }
     public int getDaysRented() {
         return daysRented;
@@ -13,5 +13,4 @@ public class Rental {
     public Movie getMovie() {
         return movie;
     }
-
 }
