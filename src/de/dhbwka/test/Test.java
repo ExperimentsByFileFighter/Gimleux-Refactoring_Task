@@ -26,7 +26,7 @@ public class Test {
                 "Born of Hope"
         };
         int[] moviePrices = {
-                10,20,30,40
+                1,2,2,0
         };
         int[] days = {
                 123,
@@ -54,15 +54,15 @@ public class Test {
 
         String expectedOutput0 = "de.dhbwka.cinema.Rental Record for "+customerName0+"\n" +
                 "\tTitle\t\tDays\tAmount\n" +
-                "\tThe Lord of the Rings - The Fellowship of the Ring\t\t123\t0.0\n" +
-                "\tThe Lord of the Rings - The Return of the King\t\t789\t0.0\n" +
-                "Amount owed is 0.0\n" +
-                "You earned 2 frequent renter points";
+                "\tThe Lord of the Rings - The Fellowship of the Ring\t\t123\t369.0\n" +
+                "\tThe Lord of the Rings - The Return of the King\t\t789\t1180.5\n" +
+                "Amount owed is 1549.5\n" +
+                "You earned 3 frequent renter points";
         String expectedOutput1 = "de.dhbwka.cinema.Rental Record for Legolas Greenleaf\n" +
                 "\tTitle\t\tDays\tAmount\n" +
-                "\tThe Lord of the Rings - The Two Towers\t\t456\t0.0\n" +
-                "\tBorn of Hope\t\t147\t0.0\n" +
-                "Amount owed is 0.0\n" +
+                "\tThe Lord of the Rings - The Two Towers\t\t456\t681.0\n" +
+                "\tBorn of Hope\t\t147\t219.5\n" +
+                "Amount owed is 900.5\n" +
                 "You earned 2 frequent renter points";
 
         String actualOutput0 = customer0.statement();
