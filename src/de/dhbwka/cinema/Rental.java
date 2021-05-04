@@ -32,10 +32,17 @@ public class Rental {
         return price;
     }
 
-    private double calculateAmount(double basicPrice, int includedPeriod, double multiplicationFactor) {
+    private double calculateAmount(double basicPrice, int includedPeriod, double pricePerExtraDay) {
         double price = basicPrice;
         if (getDaysRented() > includedPeriod)
-            price += (getDaysRented() - includedPeriod) * multiplicationFactor;
+            price += (getDaysRented() - includedPeriod) * pricePerExtraDay;
         return price;
+    }
+
+    int getFrequentRenterPoints() {
+        // add bonus for a two day new release rental
+        if ((getMovie().getPriceCode() == Movie.NEW_RELEASE) && getDaysRented() > 1)
+            return 2;
+        return 1;
     }
 }
