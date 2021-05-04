@@ -42,24 +42,29 @@ public class Customer {
         return result;
     }
 
-    private double amountFor(Rental each) {
-        double thisAmount = 0;
-        switch (each.getMovie().getPriceCode()) {
+    private double amountFor(Rental singleRental) {
+        double price;
+        switch (singleRental.getMovie().getPriceCode()) {
             case Movie.REGULAR:
-                thisAmount += 2;
-                if (each.getDaysRented() > 2)
-                    thisAmount += (each.getDaysRented() - 2) * 1.5;
+                price = calculateAmount(singleRental, 2, 2,1.5);
                 break;
             case Movie.NEW_RELEASE:
-                thisAmount += each.getDaysRented() * 3;
+                price = calculateAmount(singleRental, 0, 0,3);
                 break;
             case Movie.CHILDRENS:
-                thisAmount += 1.5;
-                if (each.getDaysRented() > 3)
-                    thisAmount += (each.getDaysRented() - 3) * 1.5;
+                price = calculateAmount(singleRental, 1.5, 3, 1.5);
                 break;
+            default:
+                price = 0;
         }
-        return thisAmount;
+        return price;
+    }
+
+    private double calculateAmount(Rental rental, double basicPrice, int includedPeriod, double multiplicationFactor) {
+        double price = basicPrice;
+        if (rental.getDaysRented() > includedPeriod)
+            price += (rental.getDaysRented() - includedPeriod) * multiplicationFactor;
+        return price;
     }
 
 }
