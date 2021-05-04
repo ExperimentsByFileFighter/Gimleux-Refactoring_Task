@@ -1,8 +1,8 @@
 package de.dhbwka.cinema;
 
 public class Rental {
-    Movie movie;
-    private int daysRented;
+    private final Movie movie;
+    private final int daysRented;
     public Rental(Movie newmovie, int newdaysRented) {
         movie = newmovie;
         daysRented = newdaysRented;

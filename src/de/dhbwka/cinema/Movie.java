@@ -5,7 +5,7 @@ public class Movie {
     public static final int REGULAR = 0;
     public static final int NEW_RELEASE = 1;
     private Price price;
-    private String title;
+    private final String title;
     public Movie(String newtitle, int newpriceCode) {
         title = newtitle;
         setPrice(newpriceCode);
