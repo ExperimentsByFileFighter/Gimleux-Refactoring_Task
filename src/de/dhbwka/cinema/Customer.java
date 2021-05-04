@@ -24,11 +24,11 @@ public class Customer {
 
         for (Rental rental : rentals){
             //show figures for this rental
-            result.append("\t").append(rental.getMovie().getTitle()).append("\t\t").append(rental.getDaysRented()).append("\t").append(String.valueOf(rental.getMovie().getCharge(rental.getDaysRented()))).append("\n");
+            result.append("\t").append(rental.getMovie().getTitle()).append("\t\t").append(rental.getDaysRented()).append("\t").append(rental.getMovie().getCharge(rental.getDaysRented())).append("\n");
         }
         //add footer lines
-        result.append("Amount owed is ").append(String.valueOf(getTotalCharge())).append("\n")
-                .append("You earned ").append(String.valueOf(getTotalFrequentRenterPoints())).append(" frequent renter points");
+        result.append("Amount owed is ").append(getTotalCharge()).append("\n")
+                .append("You earned ").append(getTotalFrequentRenterPoints()).append(" frequent renter points");
         return result.toString();
     }
 
