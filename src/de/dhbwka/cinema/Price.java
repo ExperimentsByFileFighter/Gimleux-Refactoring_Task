@@ -2,28 +2,18 @@ package de.dhbwka.cinema;
 
 public abstract class Price {
     abstract int getPriceCode();
-    abstract double getPrice(Rental rental);
     int getFrequentRenterPoints(int rentalLength) {
         return 1;
     }
 
     double getCharge(int rentalLength) {
-        switch (getPriceCode()) {
-            case Movie.REGULAR:
-                return calculateAmount(2, 2,1.5, rentalLength);
-            case Movie.NEW_RELEASE:
-                return calculateAmount(0, 0,3, rentalLength);
-            case Movie.CHILDRENS:
-                return calculateAmount(1.5, 3, 1.5, rentalLength);
-            default:
-                return  0;
-        }
+        return 0;
     }
 
-    private double calculateAmount(double basicPrice, int includedPeriod, double pricePerExtraDay, int rentalLength) {
+    protected double calculateCosts(double basicPrice, int includedTime, double pricePerExtraDay, int rentalLength) {
         double price = basicPrice;
-        if (rentalLength > includedPeriod)
-            price += (rentalLength - includedPeriod) * pricePerExtraDay;
+        if (rentalLength > includedTime)
+            price += (rentalLength - includedTime) * pricePerExtraDay;
         return price;
     }
 

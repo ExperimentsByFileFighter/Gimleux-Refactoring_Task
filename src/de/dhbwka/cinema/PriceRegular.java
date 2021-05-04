@@ -7,7 +7,7 @@ public class PriceRegular extends Price{
     }
 
     @Override
-    public double getPrice(Rental rental) {
-        return 0;
+    double getCharge(int rentalLength) {
+        return calculateCosts(2, 2,1.5, rentalLength);
     }
 }

@@ -7,7 +7,7 @@ public class PriceChildren extends Price{
     }
 
     @Override
-    double getPrice(Rental rental) {
-        return 0;
+    double getCharge(int rentalLength) {
+        return calculateCosts(1.5, 3, 1.5, rentalLength);
     }
 }

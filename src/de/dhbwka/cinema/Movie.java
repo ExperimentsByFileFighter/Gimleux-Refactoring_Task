@@ -4,7 +4,7 @@ public class Movie {
     public static final int CHILDRENS = 2;
     public static final int REGULAR = 0;
     public static final int NEW_RELEASE = 1;
-    Price price;
+    private Price price;
     private String title;
     public Movie(String newtitle, int newpriceCode) {
         title = newtitle;
@@ -18,15 +18,17 @@ public class Movie {
         return title;
     };
 
+    public Price getPrice(){
+        return price;
+    }
+
     public void setPrice(int priceCode){
         price = Price.createPrice(priceCode);
     }
 
     int getFrequentRenterPoints(int rentalLength) {
         // add bonus for a two day new release rental
-        if ((getPriceCode() == NEW_RELEASE) && rentalLength > 1)
-            return 2;
-        return 1;
+        return price.getFrequentRenterPoints(rentalLength);
     }
 
     double getCharge(int rentalLength){
