@@ -18,7 +18,7 @@ public class Movie {
 
     public String getTitle (){
         return title;
-    };
+    }
 
     public Price getPrice(){
         return price;
