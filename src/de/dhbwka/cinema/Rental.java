@@ -1,3 +1,5 @@
+package de.dhbwka.cinema;
+
 class Rental {
     private Movie movie;
     private int daysRented;
