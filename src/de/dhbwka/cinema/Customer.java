@@ -1,18 +1,17 @@
 package de.dhbwka.cinema;
 
-import java.util.Enumeration;
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class Customer {
     private final String name;
-    private Vector rentals = new Vector();
+    private final ArrayList<Rental> rentals = new ArrayList<Rental>();
 
     public Customer(String newname) {
         name = newname;
     }
 
     public void addRental(Rental arg) {
-        rentals.addElement(arg);
+        rentals.add(arg);
     }
 
     public String getName() {
@@ -20,14 +19,12 @@ public class Customer {
     }
 
     public String statement() {
-        Enumeration enum_rentals = rentals.elements();
         String result = "de.dhbwka.cinema.Rental Record for " + this.getName() + "\n";
         result += "\t" + "Title" + "\t" + "\t" + "Days" + "\t" + "Amount" + "\n";
 
-        while (enum_rentals.hasMoreElements()) {
-            Rental each = (Rental) enum_rentals.nextElement();
+        for (Rental rental : rentals){
             //show figures for this rental
-            result += "\t" + each.getMovie().getTitle() + "\t" + "\t" + each.getDaysRented() + "\t" + String.valueOf(each.getMovie().getCharge(each.getDaysRented())) + "\n";
+            result += "\t" + rental.getMovie().getTitle() + "\t" + "\t" + rental.getDaysRented() + "\t" + String.valueOf(rental.getMovie().getCharge(rental.getDaysRented())) + "\n";
         }
         //add footer lines
         result += "Amount owed is " + String.valueOf(getTotalCharge()) + "\n";
@@ -37,19 +34,15 @@ public class Customer {
 
     private double getTotalCharge() {
         double result = 0;
-        Enumeration enum_rentals = rentals.elements();
-        while (enum_rentals.hasMoreElements()) {
-            Rental each = (Rental) enum_rentals.nextElement();
-            result += each.getMovie().getCharge(each.getDaysRented());
+        for (Rental rental : rentals){
+            result += rental.getMovie().getCharge(rental.getDaysRented());
         }
         return result;
     }
 
     private int getTotalFrequentRenterPoints(){
         int result = 0;
-        Enumeration enum_rentals = rentals.elements();
-        while (enum_rentals.hasMoreElements()) {
-            Rental rental = (Rental) enum_rentals.nextElement();
+        for (Rental rental : rentals){
             result += rental.getMovie().getFrequentRenterPoints(rental.getDaysRented());
         }
         return result;

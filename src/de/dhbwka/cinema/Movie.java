@@ -8,9 +8,9 @@ public class Movie {
     private Price price;
     private final String title;
 
-    public Movie(String newtitle, int newpriceCode) {
-        title = newtitle;
-        setPrice(newpriceCode);
+    public Movie(String title, int priceCode) {
+        this.title = title;
+        setPrice(priceCode);
     }
     public int getPriceCode() {
         return price.getPriceCode();
