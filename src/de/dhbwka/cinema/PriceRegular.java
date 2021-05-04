@@ -10,9 +10,4 @@ public class PriceRegular extends Price{
     public double getPrice(Rental rental) {
         return 0;
     }
-
-    @Override
-    double getCharge(int rentalLength) {
-        return 0;
-    }
 }
