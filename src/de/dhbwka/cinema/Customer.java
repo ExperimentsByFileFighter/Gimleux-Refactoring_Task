@@ -26,7 +26,7 @@ public class Customer {
             double thisAmount = 0;
             Rental each = (Rental) enum_rentals.nextElement();
             //determine amounts for each line
-            thisAmount = amountFor(each);
+            thisAmount = each.amountFor();
             // add frequent renter points
             frequentRenterPoints ++;
             // add bonus for a two day new release rental
@@ -40,31 +40,6 @@ public class Customer {
         result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
         result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
         return result;
-    }
-
-    private double amountFor(Rental singleRental) {
-        double price;
-        switch (singleRental.getMovie().getPriceCode()) {
-            case Movie.REGULAR:
-                price = calculateAmount(singleRental, 2, 2,1.5);
-                break;
-            case Movie.NEW_RELEASE:
-                price = calculateAmount(singleRental, 0, 0,3);
-                break;
-            case Movie.CHILDRENS:
-                price = calculateAmount(singleRental, 1.5, 3, 1.5);
-                break;
-            default:
-                price = 0;
-        }
-        return price;
-    }
-
-    private double calculateAmount(Rental rental, double basicPrice, int includedPeriod, double multiplicationFactor) {
-        double price = basicPrice;
-        if (rental.getDaysRented() > includedPeriod)
-            price += (rental.getDaysRented() - includedPeriod) * multiplicationFactor;
-        return price;
     }
 
 }
